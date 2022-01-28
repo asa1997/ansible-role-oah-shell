@@ -1,4 +1,31 @@
+
 ---
 - debug:
     msg: "oah-install of oah.shell"
-# install oah-shell
+
+- name: bes-shell fetch
+  become: yes
+  vars:
+    clone_path: '{{ HOME }}/oah_install.sh'
+  get_url:
+    url: https://raw.githubusercontent.com/Be-Secure/oah-installer/install.sh | bash
+    dest: "{{ clone_path }}"
+
+- name: Executing bes environment
+  become: yes
+  command: "{{ item }}"
+  with_items:
+       - chmod 755 '{{ HOME }}/oah_install.sh'
+       #- chown vagrant:vagrant ./besman_install.sh 
+
+- name: Triggering the environment
+  become: yes
+  become_user: vagrant
+  command:  '{{ HOME }}/oah_install.sh'
+
+- name: Updating permission 
+  shell: chmod 755 '{{ HOME }}/.oah/bin/oah-init.sh'
+
+- name: Source Be-Secure environment 
+  become: yes
+  become_user: root
