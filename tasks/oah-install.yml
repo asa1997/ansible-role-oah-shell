@@ -11,7 +11,7 @@
     url: https://raw.githubusercontent.com/Be-Secure/oah-installer/install.sh | bash
     dest: "{{ clone_path }}"
 
-- name: Executing bes environment
+- name: Executing oah environment
   become: yes
   command: "{{ item }}"
   with_items:
@@ -26,6 +26,6 @@
 - name: Updating permission 
   shell: chmod 755 '{{ HOME }}/.oah/bin/oah-init.sh'
 
-- name: Source Be-Secure environment 
+- name: Source oah environment 
   become: yes
   become_user: root
