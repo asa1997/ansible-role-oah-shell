@@ -8,7 +8,7 @@
   vars:
     clone_path: '{{ HOME }}/oah_install.sh'
   get_url:
-    url: https://raw.githubusercontent.com/Be-Secure/oah-installer/install.sh | bash
+    url: https://raw.githubusercontent.com/Be-Secure/oah-installer/master/install.sh | bash
     dest: "{{ clone_path }}"
 
 - name: Executing oah environment
