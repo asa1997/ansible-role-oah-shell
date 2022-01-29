@@ -29,3 +29,4 @@
 - name: Source oah environment 
   become: yes
   become_user: root
+  shell: '{{ HOME }}/.besman/bin/besman-init.sh'
